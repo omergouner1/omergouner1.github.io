@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>Box</title>
+
+<head>
+    <style>
+        #box {
+            position: absolute;
+            left: 750px;
+            top: 350px;
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            border: 5px solid black;
+
+        }
+
+        #score {
+            font-size: 100px;
+            position: absolute;
+            left: 760px;
+            bottom: -60px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p id="score">0</p>
+    <div>
+        <img id="box"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2LIH5OR2o1IwolfkqSmI_whypD85gkMxyVW2ZtKq3Hzd6vA2FXFUn6HL6UPuWR33Iyc:images.genius.com/ec92ebc969838f23c3e42c9fdc6e7c2b.548x548x1.png&usqp=CAU">
+
+    </div>
+</body>
+
+</html>
+<script>
+    var x = 750
+    var y = 350
+    var dir = 0
+    var score = 0
+    var reset1 = 750
+    var reset2 = 350
+    var audio = new Audio('https://pub-7de58e77bbdc477680e9cd9b28c977e3.r2.dev/Gnome%20Sound%20Effect.mp3');
+
+
+    document.getElementById("box").addEventListener("click", addScore)
+    document.getElementById("box").addEventListener("click", play1)
+    document.getElementById("box").addEventListener("click", moveBox)
+
+
+    function moveBox() {
+        dir = Math.floor(Math.random() * 450) + 1;
+        x = x - dir
+        document.getElementById("box").style.left = x + "px"
+
+        dir = Math.floor(Math.random() * 300) + 1;
+        x = x + dir
+        document.getElementById("box").style.left = x + "px"
+
+        dir = Math.floor(Math.random() * 275) + 1;
+        y = y - dir
+        document.getElementById("box").style.top = y + "px"
+
+        dir = Math.floor(Math.random() * 170) + 1;
+        y = y + dir
+        document.getElementById("box").style.top = y + "px"
+
+        if (x <= -10) {
+            x = 800
+        }
+        if (x >= 1550) {
+            x = 800
+        }
+
+        if (y <= -10) {
+            y = 400
+        }
+        if (y >= 750) {
+            y = 400
+        }
+        document.getElementById("box").style.left = x + "px"
+        document.getElementById("box").style.top = y + "px"
+
+
+    }
+    function addScore() {
+        score = score + 1
+        document.getElementById("score").innerText = Math.round(score);
+    }
+    function play1() {
+        audio.play();
+    }
+</script>
