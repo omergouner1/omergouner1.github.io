@@ -4,6 +4,10 @@
 
 <head>
     <style>
+        body {
+            background-color: cornflowerblue;
+        }
+
         #box {
             position: absolute;
             left: 750px;
@@ -21,18 +25,29 @@
             left: 760px;
             bottom: -60px;
         }
+
+        #timer {
+            font-size: 80px;
+            position: absolute;
+            left: 760px;
+            top: -40px;
+        }
     </style>
 
 </head>
 
 <body>
-    <p id="score">0</p>
-    <div>
-        <img id="box"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2LIH5OR2o1IwolfkqSmI_whypD85gkMxyVW2ZtKq3Hzd6vA2FXFUn6HL6UPuWR33Iyc:images.genius.com/ec92ebc969838f23c3e42c9fdc6e7c2b.548x548x1.png&usqp=CAU">
 
-    </div>
-</body>
+    <body onload="startTimer">
+        <p id="score">$0</p>
+        <p id="timer">2.0</p>
+
+        <div>
+            <img id="box"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2LIH5OR2o1IwolfkqSmI_whypD85gkMxyVW2ZtKq3Hzd6vA2FXFUn6HL6UPuWR33Iyc:images.genius.com/ec92ebc969838f23c3e42c9fdc6e7c2b.548x548x1.png&usqp=CAU">
+
+        </div>
+    </body>
 
 </html>
 <script>
@@ -48,49 +63,133 @@
     document.getElementById("box").addEventListener("click", addScore)
     document.getElementById("box").addEventListener("click", play1)
     document.getElementById("box").addEventListener("click", moveBox)
+    document.getElementById("box").addEventListener("click", startTimer1)
+    var start = 1
 
 
+    function startTimer1() {
+        if (start === 1) {
+            setInterval(startTimer, 100);
+            start = start - 1
+
+
+        }
+        var rarity = 1
+        var rarlength = 0
+        borderColor = " "
+    }
     function moveBox() {
-        dir = Math.floor(Math.random() * 450) + 1;
+        dir = Math.floor(Math.random() * 500) + 1;
         x = x - dir
         document.getElementById("box").style.left = x + "px"
 
-        dir = Math.floor(Math.random() * 300) + 1;
+        dir = Math.floor(Math.random() * 500) + 1;
         x = x + dir
         document.getElementById("box").style.left = x + "px"
 
-        dir = Math.floor(Math.random() * 275) + 1;
+        dir = Math.floor(Math.random() * 250) + 1;
         y = y - dir
         document.getElementById("box").style.top = y + "px"
 
-        dir = Math.floor(Math.random() * 170) + 1;
+        dir = Math.floor(Math.random() * 250) + 1;
         y = y + dir
         document.getElementById("box").style.top = y + "px"
 
         if (x <= -10) {
             x = 800
         }
-        if (x >= 1550) {
+        if (x >= 1400) {
             x = 800
         }
 
         if (y <= -10) {
             y = 400
         }
-        if (y >= 750) {
+        if (y >= 650) {
             y = 400
         }
         document.getElementById("box").style.left = x + "px"
         document.getElementById("box").style.top = y + "px"
 
+        rarity = Math.floor(Math.random() * 100) + 1;
+        if (rarity <= 100) {
+            rarlength = 100
+            borderColor = "gray"
+        }
+        if (rarity <= 35) {
+            rarlength = 80
+            borderColor = "green"
+
+        }
+        if (rarity <= 15) {
+            rarlength = 60
+            borderColor = "blue"
+
+        }
+        if (rarity <= 8) {
+            rarlength = 40
+            borderColor = "purple"
+
+        }
+        if (rarity <= 3) {
+            rarlength = 20
+            borderColor = "yellow"
+
+        }
+        document.getElementById("box").style.height = rarlength + "px"
+        document.getElementById("box").style.width = rarlength + "px"
+        document.getElementById("box").style.border = 5 + "px" + " solid " + borderColor
+
 
     }
-    function addScore() {
-        score = score + 1
-        document.getElementById("score").innerText = Math.round(score);
-    }
+
     function play1() {
         audio.play();
     }
-    
+    var sec = 1
+    var mil = 9
+    var decreaseAmo = 1
+
+    function startTimer() {
+        if (mil <= 10) {
+            mil = mil - 1
+        }
+        if (mil < 0) {
+            mil = 9
+            sec = sec - 1
+        }
+        if (sec < 0) {
+            sec = 1
+            mil = 9
+            score = score - 5
+            moveBox()
+            document.getElementById("timer").innerText = sec + "." + mil;
+        }
+        document.getElementById("score").innerText = "$" + Math.round(score);
+        document.getElementById("timer").innerText = sec + "." + mil
+    }
+    var Rarval = 1
+    function addScore() {
+        if (rarity <= 100) {
+            Rarval = 1
+        }
+        if (rarity <= 35) {
+            Rarval = 2
+        }
+        if (rarity <= 15) {
+            Rarval = 3
+        }
+        if (rarity <= 8) {
+            Rarval = 4
+        }
+        if (rarity <= 3) {
+            Rarval = 5
+        }
+        score = score + Rarval
+        sec = 1
+        mil = 9
+        document.getElementById("timer").innerText = sec + "." + mil
+        document.getElementById("score").innerText = "$" + Math.round(score)
+
+    }
 </script>
