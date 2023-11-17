@@ -38,7 +38,7 @@
 
 <body>
 
-    <body onload="startTimer">
+    <body>
         <p id="score">$0</p>
         <p id="timer">2.0</p>
 
@@ -76,29 +76,31 @@
         }
         var rarity = 1
         var rarlength = 0
-        borderColor = " "
+        var borderColor = " "
+        var borderPx = 5
+
     }
     function moveBox() {
-        dir = Math.floor(Math.random() * 500) + 1;
+        dir = Math.floor(Math.random() * 700) + 1;
         x = x - dir
         document.getElementById("box").style.left = x + "px"
 
-        dir = Math.floor(Math.random() * 500) + 1;
+        dir = Math.floor(Math.random() * 700) + 1;
         x = x + dir
         document.getElementById("box").style.left = x + "px"
 
-        dir = Math.floor(Math.random() * 250) + 1;
+        dir = Math.floor(Math.random() * 350) + 1;
         y = y - dir
         document.getElementById("box").style.top = y + "px"
 
-        dir = Math.floor(Math.random() * 250) + 1;
+        dir = Math.floor(Math.random() * 350) + 1;
         y = y + dir
         document.getElementById("box").style.top = y + "px"
 
         if (x <= -10) {
             x = 800
         }
-        if (x >= 1400) {
+        if (x >= 1450) {
             x = 800
         }
 
@@ -115,36 +117,42 @@
         if (rarity <= 100) {
             rarlength = 100
             borderColor = "gray"
+            borderPx = 5
         }
         if (rarity <= 35) {
             rarlength = 80
             borderColor = "green"
-
+            borderPx = 5
         }
         if (rarity <= 15) {
             rarlength = 60
             borderColor = "blue"
-
+            borderPx = 5
         }
         if (rarity <= 8) {
             rarlength = 40
             borderColor = "purple"
-
+            borderPx = 3
         }
         if (rarity <= 3) {
             rarlength = 20
             borderColor = "yellow"
+            borderPx = 3
 
         }
         document.getElementById("box").style.height = rarlength + "px"
         document.getElementById("box").style.width = rarlength + "px"
-        document.getElementById("box").style.border = 5 + "px" + " solid " + borderColor
+        document.getElementById("box").style.border = borderPx + "px" + " solid " + borderColor
 
 
     }
 
     function play1() {
-        audio.play();
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.currentTime = 0
+        }
     }
     var sec = 1
     var mil = 9
