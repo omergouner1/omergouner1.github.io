@@ -1,36 +1,781 @@
 <!DOCTYPE html>
 <html>
-<title>Box</title>
+<title>ClickBox</title>
 
 <head>
     <style>
         body {
             background-color: cornflowerblue;
+            overflow: hidden;
+
         }
+
 
         #box {
             position: absolute;
-            left: 750px;
-            top: 350px;
+            left: 550px;
+            top: 300px;
             height: 100px;
             width: 100px;
             background-color: red;
             border: 5px solid black;
+            -webkit-user-drag: none;
+            user-select: none;
 
         }
 
         #score {
             font-size: 100px;
             position: absolute;
-            left: 760px;
-            bottom: -60px;
+            left: 530px;
+            bottom: -100px;
+            -webkit-user-drag: none;
+            user-select: none;
+
         }
 
         #timer {
             font-size: 80px;
             position: absolute;
-            left: 760px;
-            top: -40px;
+            left: 530px;
+            top: -200px;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost1 {
+            z-index: 5;
+            position: absolute;
+            left: 1300px;
+            top: 68px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost2 {
+            z-index: 5;
+            position: absolute;
+            left: 1300px;
+            top: 168px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost3 {
+            z-index: 5;
+            position: absolute;
+            left: 1300px;
+            top: 268px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost4 {
+            z-index: 5;
+            position: absolute;
+            left: 1300px;
+            top: 368px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost5 {
+            z-index: 5;
+            position: absolute;
+            left: 1300px;
+            top: 468px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost6 {
+            z-index: 5;
+            position: absolute;
+            left: 2000px;
+            top: 68px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Cost7 {
+            z-index: 5;
+            position: absolute;
+            left: 2000px;
+            top: 168px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        #Cost8 {
+            z-index: 5;
+            position: absolute;
+            left: 2000px;
+            top: 268px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        #Cost9 {
+            z-index: 5;
+            position: absolute;
+            left: 2000px;
+            top: 368px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        #Cost10 {
+            z-index: 5;
+            position: absolute;
+            left: 2000px;
+            top: 468px;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        #Upg1 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 1130px;
+            top: 60px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Upg1:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg2 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 1130px;
+            top: 160px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+        #Upg2:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg3 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 1130px;
+            top: 260px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Upg3:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg4 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 1130px;
+            top: 360px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+        #Upg4:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg5 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 1130px;
+            top: 460px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+        #Upg5:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg6 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 2000px;
+            top: 60px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+
+        #Upg6:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg7 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 2000px;
+            top: 160px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+
+        #Upg7:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg8 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 2000px;
+            top: 260px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+
+        #Upg8:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg9 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 2000px;
+            top: 360px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+
+        #Upg9:hover {
+            background-color: #2c974b;
+        }
+
+        #Upg10 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: absolute;
+            left: 2000px;
+            top: 460px;
+            width: 220px;
+            height: 65px;
+            text-align: left;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: text-top;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+
+        }
+
+
+        #Upg10:hover {
+            background-color: #2c974b;
+        }
+
+
+
+
+        #Page2 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 3px 8px;
+            position: absolute;
+            left: 1260px;
+            top: 15px;
+            width: 60px;
+            height: 30px;
+            text-align: middle;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Page2:hover {
+            background-color: #2c974b;
+        }
+
+        #Page1 {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 3px 8px;
+            position: absolute;
+            left: 1160px;
+            top: 15px;
+            width: 60px;
+            height: 30px;
+            text-align: middle;
+            text-decoration: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #Page1:hover {
+            background-color: #2c974b;
+        }
+
+        #Chances {
+            z-index: 5;
+            text-decoration: underline;
+            position: absolute;
+            left: 1200px;
+            top: 530px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+
+            user-select: none;
+
+        }
+
+        #TxtComCha {
+            z-index: 5;
+            position: absolute;
+            left: 1170px;
+            top: 555px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #TxtUncCha {
+            z-index: 5;
+            position: absolute;
+            left: 1170px;
+            top: 575px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #TxtRarCha {
+            z-index: 5;
+            position: absolute;
+            left: 1170px;
+            top: 595px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #TxtEpicCha {
+            z-index: 5;
+            position: absolute;
+            left: 1170px;
+            top: 615px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
+        }
+
+        #TxtLegCha {
+            z-index: 5;
+            position: absolute;
+            left: 1170px;
+            top: 635px;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            opacity: 1;
+            -webkit-user-drag: none;
+            user-select: none;
+
         }
     </style>
 
@@ -39,8 +784,40 @@
 <body>
 
     <body>
+
+
+        <p id="Cost1">$20</p>
+        <p id="Cost2">$40</p>
+        <p id="Cost3">$75</p>
+        <p id="Cost4">$150</p>
+        <p id="Cost5">$15</p>
+        <p id="Cost6">$15</p>
+        <p id="Cost7">$12</p>
+        <p id="Cost8">$13</p>
+        <p id="Cost9">$14</p>
+        <p id="Cost10">$16</p>
+
+        <p id="TxtComCha">Common % - 100%</p>
+        <p id="TxtUncCha">Uncommon % - 0%</p>
+        <p id="TxtRarCha">Rare % - 0%</p>
+        <p id="TxtEpicCha">Epic % - 0%</p>
+        <p id="TxtLegCha">Legendary % - 0%</p>
+
         <p id="score">$0</p>
-        <p id="timer">2.0</p>
+        <p id="timer">10.0</p>
+        <p id="Chances">Chances:</p>
+        <button id="Page1">Page 1</button>
+        <button id="Page2">Page 2</button>
+        <button id="Upg1">Unlock Uncommon</button>
+        <button id="Upg2">Unlock Rare</button>
+        <button id="Upg3">Unlock Epic</button>
+        <button id="Upg4">Unlock Legendary</button>
+        <button id="Upg5">Unlock Auto Clicker</button>
+        <button id="Upg6">Upg Uncommon %</button>
+        <button id="Upg7">Upg Rare %</button>
+        <button id="Upg8">Upg Epic %</button>
+        <button id="Upg9">Upg Legendary %</button>
+        <button id="Upg10">Upg Auto Clicker</button>
 
         <div>
             <img id="box"
@@ -64,11 +841,164 @@
     document.getElementById("box").addEventListener("click", play1)
     document.getElementById("box").addEventListener("click", moveBox)
     document.getElementById("box").addEventListener("click", startTimer1)
+    document.getElementById("Upg1").addEventListener("click", UnlockUpg1)
+    document.getElementById("Upg2").addEventListener("click", UnlockUpg2)
+    document.getElementById("Upg3").addEventListener("click", UnlockUpg3)
+    document.getElementById("Upg4").addEventListener("click", UnlockUpg4)
+    document.getElementById("Upg5").addEventListener("click", UnlockUpg5)
+    document.getElementById("Upg10").addEventListener("click", UnlockUpg10)
+
+    document.getElementById("Page2").addEventListener("click", Page2)
+    document.getElementById("Page1").addEventListener("click", Page1)
+
+
     var start = 1
+    var Upg1start = 1
+    var Upg2start = 1
+    var Upg3start = 1
+    var Upg4start = 1
+    var Upg5start = 1
+    var Upg6start = 1
+    var Upg7start = 1
+    var Upg8start = 1
+    var Upg9start = 1
+    var Upg10start = 1
+
+
+
+    var chance = 100
+    var uncChance = 0
+    var rarChance = 0
+    var epicChance = 0
+    var legChance = 0
+
+
+    var movePage = 2000
+    var movePageCost = 2000
+    var movePage2 = 1130
+    var movePage2Cost = 1300
+
+
+    function Page2() {
+        document.getElementById("Upg1").style.left = movePage + "px"
+        document.getElementById("Upg2").style.left = movePage + "px"
+        document.getElementById("Upg3").style.left = movePage + "px"
+        document.getElementById("Upg4").style.left = movePage + "px"
+        document.getElementById("Upg5").style.left = movePage + "px"
+        document.getElementById("Upg6").style.left = movePage2 + "px"
+        document.getElementById("Upg7").style.left = movePage2 + "px"
+        document.getElementById("Upg8").style.left = movePage2 + "px"
+        document.getElementById("Upg9").style.left = movePage2 + "px"
+        document.getElementById("Upg10").style.left = movePage2 + "px"
+        document.getElementById("Cost1").style.left = movePageCost + "px"
+        document.getElementById("Cost2").style.left = movePageCost + "px"
+        document.getElementById("Cost3").style.left = movePageCost + "px"
+        document.getElementById("Cost4").style.left = movePageCost + "px"
+        document.getElementById("Cost5").style.left = movePageCost + "px"
+        document.getElementById("Cost6").style.left = movePage2Cost + "px"
+        document.getElementById("Cost7").style.left = movePage2Cost + "px"
+        document.getElementById("Cost8").style.left = movePage2Cost + "px"
+        document.getElementById("Cost9").style.left = movePage2Cost + "px"
+        document.getElementById("Cost10").style.left = movePage2Cost + "px"
+
+
+    }
+    function Page1() {
+        document.getElementById("Upg1").style.left = movePage2 + "px"
+        document.getElementById("Upg2").style.left = movePage2 + "px"
+        document.getElementById("Upg3").style.left = movePage2 + "px"
+        document.getElementById("Upg4").style.left = movePage2 + "px"
+        document.getElementById("Upg5").style.left = movePage2 + "px"
+        document.getElementById("Upg6").style.left = movePage + "px"
+        document.getElementById("Upg7").style.left = movePage + "px"
+        document.getElementById("Upg8").style.left = movePage + "px"
+        document.getElementById("Upg9").style.left = movePage + "px"
+        document.getElementById("Upg10").style.left = movePage + "px"
+        document.getElementById("Cost1").style.left = movePage2Cost + "px"
+        document.getElementById("Cost2").style.left = movePage2Cost + "px"
+        document.getElementById("Cost3").style.left = movePage2Cost + "px"
+        document.getElementById("Cost4").style.left = movePage2Cost + "px"
+        document.getElementById("Cost5").style.left = movePage2Cost + "px"
+        document.getElementById("Cost6").style.left = movePageCost + "px"
+        document.getElementById("Cost7").style.left = movePageCost + "px"
+        document.getElementById("Cost8").style.left = movePageCost + "px"
+        document.getElementById("Cost9").style.left = movePageCost + "px"
+        document.getElementById("Cost10").style.left = movePageCost + "px"
+
+    }
+
+    function UnlockUpg1() {
+        if (score >= 20 && Upg1start === 1) {
+            score = score - 20
+            uncChance = 40
+            Upg1start = 0
+            document.getElementById("Upg1").style.opacity = 0.6
+            document.getElementById("Cost1").style.opacity = 0.7
+            document.getElementById("score").innerText = "$" + Math.round(score);
+
+        }
+    }
+    function UnlockUpg2() {
+        if (score >= 40 && Upg2start === 1) {
+            score = score - 40
+            rarChance = 20
+            Upg2start = 0
+            document.getElementById("Upg2").style.opacity = 0.6
+            document.getElementById("Cost2").style.opacity = 0.7
+            document.getElementById("score").innerText = "$" + Math.round(score);
+
+        }
+    }
+    function UnlockUpg3() {
+        if (score >= 75 && Upg3start === 1) {
+            score = score - 75
+            epicChance = 10
+            Upg3start = 0
+            document.getElementById("Upg3").style.opacity = 0.6
+            document.getElementById("Cost3").style.opacity = 0.7
+            document.getElementById("score").innerText = "$" + Math.round(score);
+
+        }
+    }
+    function UnlockUpg4() {
+        if (score >= 150 && Upg4start === 1) {
+            score = score - 150
+            legChance = 5
+            Upg4start = 0
+            document.getElementById("Upg4").style.opacity = 0.6
+            document.getElementById("Cost4").style.opacity = 0.7
+            document.getElementById("score").innerText = "$" + Math.round(score);
+
+        }
+
+    }
+    function UnlockUpg5() {
+        if (score >= 15 && Upg5start === 1) {
+            score = score - 15
+            Upg5start = 0
+            start = 2
+            document.getElementById("timer").style.top = -80 + "px"
+            document.getElementById("Upg5").style.opacity = 0.6
+            document.getElementById("Cost5").style.opacity = 0.7
+            document.getElementById("score").innerText = "$" + Math.round(score);
+            startTimer1();
+        }
+    }
+    function UnlockUpg10() {
+        if (score >= 16 && Upg10start === 1) {
+            score = score - 16
+            Upg10start = 0
+            sec = 9
+            document.getElementById("Upg10").style.opacity = 0.6
+            document.getElementById("Cost10").style.opacity = 0.7
+            document.getElementById("score").innerText = "$" + Math.round(score);
+        }
+    }
+
 
 
     function startTimer1() {
-        if (start === 1) {
+        if (start === 2) {
             setInterval(startTimer, 100);
             start = start - 1
 
@@ -100,45 +1030,53 @@
         if (x <= -10) {
             x = 800
         }
-        if (x >= 1450) {
+        if (x >= 1100) {
             x = 800
         }
 
-        if (y <= -10) {
+        if (y <= 0) {
             y = 400
         }
-        if (y >= 650) {
+        if (y >= 575) {
             y = 400
         }
         document.getElementById("box").style.left = x + "px"
         document.getElementById("box").style.top = y + "px"
 
         rarity = Math.floor(Math.random() * 100) + 1;
-        if (rarity <= 100) {
+        if (rarity <= chance) {
             rarlength = 100
             borderColor = "gray"
             borderPx = 5
+            Rarval = 1
+
         }
-        if (rarity <= 35) {
+        if (rarity <= uncChance) {
             rarlength = 80
             borderColor = "green"
             borderPx = 5
+            Rarval = 3
+
         }
-        if (rarity <= 15) {
+        if (rarity <= rarChance) {
             rarlength = 60
             borderColor = "blue"
             borderPx = 5
+            Rarval = 5
+
         }
-        if (rarity <= 8) {
+        if (rarity <= epicChance) {
             rarlength = 40
             borderColor = "purple"
-            borderPx = 3
+            borderPx = 5
+            Rarval = 10
+
         }
-        if (rarity <= 3) {
+        if (rarity <= legChance) {
             rarlength = 20
             borderColor = "yellow"
-            borderPx = 3
-
+            borderPx = 4
+            Rarval = 20
         }
         document.getElementById("box").style.height = rarlength + "px"
         document.getElementById("box").style.width = rarlength + "px"
@@ -154,8 +1092,8 @@
             audio.currentTime = 0
         }
     }
-    var sec = 1
-    var mil = 9
+    var sec = 10
+    var mil = 0
     var decreaseAmo = 1
 
     function startTimer() {
@@ -167,9 +1105,9 @@
             sec = sec - 1
         }
         if (sec < 0) {
-            sec = 1
-            mil = 9
-            score = score - 5
+            sec = 10
+            mil = 0
+            score = score + Rarval
             moveBox()
             document.getElementById("timer").innerText = sec + "." + mil;
         }
@@ -181,21 +1119,20 @@
         if (rarity <= 100) {
             Rarval = 1
         }
-        if (rarity <= 35) {
-            Rarval = 2
-        }
-        if (rarity <= 15) {
+        if (rarity <= uncChance) {
             Rarval = 3
         }
-        if (rarity <= 8) {
-            Rarval = 4
-        }
-        if (rarity <= 3) {
+        if (rarity <= rarChance) {
             Rarval = 5
         }
+        if (rarity <= epicChance) {
+            Rarval = 10
+        }
+        if (rarity <= legChance) {
+            Rarval = 20
+        }
         score = score + Rarval
-        sec = 1
-        mil = 9
+
         document.getElementById("timer").innerText = sec + "." + mil
         document.getElementById("score").innerText = "$" + Math.round(score)
 
