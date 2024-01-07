@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<title>Worm Game</title>
+
+<head>
+    <style>
+        #box {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            height: 50px;
+            width: 50px;
+            background-color: blue;
+
+        }
+
+        #kill {
+            position: absolute;
+            left: 800px;
+            top: -20px;
+            height: 200px;
+            width: 20px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <p id="box">
+
+        </p>
+        <p id="kill">
+
+        </p>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    var x = 100
+    var y = 100
+    var Killypos = -20
+    var dir = 10
+    var KillyposTop = 1
+
+
+
+
+    function moveKill() {
+        KillyposTop = Killypos + 200
+        if (Killypos <= -60) {
+            dir = 10
+        }
+        if (Killypos >= 460) {
+            dir = -10
+        }
+        Killypos = Killypos + dir
+        document.getElementById("kill").style.top = Killypos + "px"
+        if (y >= Killypos - 30 && y <= KillyposTop && x <= 820 && x >= 770) {
+            x = 100
+            y = 100
+            document.getElementById("box").style.left = x + "px"
+            document.getElementById("box").style.top = y + "px"
+
+        }
+    }
+
+    document.getElementById("kill").style.top = Killypos + "px"
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "d") {
+            x = x + 35
+            document.getElementById("box").style.left = x + "px";
+
+
+        }
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "s") {
+            y = y + 35
+            document.getElementById("box").style.top = y + "px";
+
+
+        }
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "a") {
+            x = x - 35
+            document.getElementById("box").style.left = x + "px";
+
+
+        }
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "w") {
+            y = y - 35
+            document.getElementById("box").style.top = y + "px";
+
+
+        }
+    })
+
+    setInterval(moveKill, 10)
+
+
+</script>

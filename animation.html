@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Animation</title>
+    <style>
+        #text1 {
+            position: absolute;
+            left: 525px;
+            top: 30px;
+            font-size: 50px;
+        }
+
+        #image1 {
+            position: absolute;
+            left: 450px;
+            top: 200px;
+        }
+
+        #image1 {
+            animation-name: grow;
+            animation-duration: 4s;
+            height: 500px;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;
+
+        }
+
+        #text1 {
+            animation-name: grow;
+            animation-duration: 4s;
+            height: 500px;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;
+
+
+
+        }
+
+
+        @keyframes grow {
+            0% {
+
+                height: 50px;
+                width: 50;
+                transform: rotate(720deg)
+            }
+
+            20% {
+                height: 100px;
+                width: 100px;
+            }
+
+            40% {
+                height: 25px;
+                width: 25px;
+            }
+
+            60% {
+                height: 400px;
+                width: 200px;
+            }
+
+            80% {
+                height: 100px;
+                width: 300px;
+            }
+
+            100% {
+                height: 500px;
+                width: 500px;
+
+            }
+        }
+
+        #box {
+            position: absolute;
+            top: 400px;
+            left: 800px;
+            background-color: red;
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="text1">
+            THIS IS GEORGE
+        </p>
+        <img id="image1"
+            src="data:image/jpeg;base64,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">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+</script>

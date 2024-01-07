@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-color: lightcoral;
+        }
+
+        #gridbox1 {
+            position: absolute;
+            left: 370px;
+            top: 150px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox2 {
+            position: absolute;
+            left: 500px;
+            top: 150px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox3 {
+            position: absolute;
+            left: 630px;
+            top: 150px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox4 {
+            position: absolute;
+            left: 760px;
+            top: 150px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox5 {
+            position: absolute;
+            left: 890px;
+            top: 150px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox6 {
+            position: absolute;
+            left: 370px;
+            top: 280px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox7 {
+            position: absolute;
+            left: 500px;
+            top: 280px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox8 {
+            position: absolute;
+            left: 630px;
+            top: 280px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox9 {
+            position: absolute;
+            left: 760px;
+            top: 280px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+        #gridbox10 {
+            position: absolute;
+            left: 890px;
+            top: 280px;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+        }
+
+
+        #level {
+            user-select: none;
+            position: absolute;
+            left: 520px;
+            top: -20px;
+
+            font-size: 50px;
+        }
+
+        #box {
+            position: absolute;
+            left: 450px;
+            top: 420px;
+            width: 450px;
+            height: 75px;
+            background-color: red;
+        }
+
+        #Reset {
+            position: absolute;
+            left: 550px;
+            top: 550px;
+            opacity: 0;
+            width: 250px;
+            height: 50px;
+        }
+
+        #God {
+            position: absolute;
+            left: 300px;
+            top: 10px;
+            opacity: 0;
+
+        }
+
+        #win {
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            opacity: 0;
+            font-size: 100px;
+        }
+
+        #levelCap {
+            user-select: none;
+            position: absolute;
+            left: 610px;
+            top: 70px;
+            font-size: 25px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p id="level">
+        Level 0: 0/2.00
+    </p>
+    <p id="box">
+
+    </p>
+    <div>
+        <p id="gridbox1"> </p>
+        <p id="gridbox2"> </p>
+        <p id="gridbox3"> </p>
+        <p id="gridbox4"> </p>
+        <p id="gridbox5"> </p>
+        <p id="gridbox6"> </p>
+        <p id="gridbox7"> </p>
+        <p id="gridbox8"> </p>
+        <p id="gridbox9"> </p>
+        <p id="gridbox10"> </p>
+    </div>
+    <button id="Reset">
+        Reset
+    </button>
+
+    <p id="levelCap">
+        Level Cap - 10
+    </p>
+
+</body>
+
+</html>
+<script>
+
+    var xpNeeded = 2
+    var xpEarned = 0
+    var level = 0
+    var levelLoop = 0
+    var clickXP = 1
+    var levelCap = 10
+    var multiplier = 1
+    var boxFill = 1
+    var levelCheck = level
+    var opacityLevel = 0
+
+    document.getElementById("box").addEventListener("click", addXP)
+    document.getElementById("Reset").addEventListener("click", reset)
+
+
+    function addXP() {
+        if (xpEarned < xpNeeded) {
+            xpEarned = xpEarned + clickXP
+            xpEarned = xpEarned
+            levelCheck = level
+        }
+
+        if (xpEarned >= xpNeeded) {
+            xpEarned = 0
+            xpNeeded = xpNeeded * 1.05
+            levelCheck = level
+            level = level + 1
+            levelLoop = levelLoop + boxFill
+            document.getElementById("level").innerText = "Level " + level + ": " + xpEarned + "/" + (Math.round(xpNeeded * 100) / 100).toFixed(2);
+        }
+        if (levelLoop >= 11) {
+            levelLoop = 0
+        }
+        if (level !== levelCheck && levelLoop > 0 && levelLoop < 1) {
+            document.getElementById("gridbox1").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox1").style.opacity = opacityLevel
+        }
+        if (levelLoop >= .999 && levelLoop <= 1.001) {
+            document.getElementById("gridbox1").style.backgroundColor = "black"
+            document.getElementById("gridbox1").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 1 && levelLoop < 2) {
+            document.getElementById("gridbox2").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox2").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 1.999 && levelLoop <= 2.001) {
+            document.getElementById("gridbox2").style.backgroundColor = "black"
+            document.getElementById("gridbox2").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 2 && levelLoop < 3) {
+            document.getElementById("gridbox3").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox3").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 2.999 && levelLoop <= 3.001) {
+            document.getElementById("gridbox3").style.backgroundColor = "black"
+            document.getElementById("gridbox3").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 3 && levelLoop < 4) {
+            document.getElementById("gridbox4").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox4").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 3.999 && levelLoop <= 4.001) {
+            document.getElementById("gridbox4").style.backgroundColor = "black"
+            document.getElementById("gridbox4").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 4 && levelLoop < 5) {
+            document.getElementById("gridbox5").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox5").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 4.999 && levelLoop <= 5.001) {
+            document.getElementById("gridbox5").style.backgroundColor = "black"
+            document.getElementById("gridbox5").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 5 && levelLoop < 6) {
+            document.getElementById("gridbox6").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox6").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 5.999 && levelLoop <= 6.001) {
+            document.getElementById("gridbox6").style.backgroundColor = "black"
+            document.getElementById("gridbox6").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 6 && levelLoop < 7) {
+            document.getElementById("gridbox7").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox7").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 6.999 && levelLoop <= 7.001) {
+            document.getElementById("gridbox7").style.backgroundColor = "black"
+            document.getElementById("gridbox7").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 7 && levelLoop < 8) {
+            document.getElementById("gridbox8").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox8").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 7.999 && levelLoop <= 8.001) {
+            document.getElementById("gridbox8").style.backgroundColor = "black"
+            document.getElementById("gridbox8").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 8 && levelLoop < 9) {
+            document.getElementById("gridbox9").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox9").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 8.999 && levelLoop <= 9.001) {
+            document.getElementById("gridbox9").style.backgroundColor = "black"
+            document.getElementById("gridbox9").style.opacity = 1
+            opacityLevel = 0
+        }
+        if (level !== levelCheck && levelLoop > 9 && levelLoop < 10) {
+            document.getElementById("gridbox10").style.backgroundColor = "black"
+            opacityLevel = opacityLevel + boxFill
+            document.getElementById("gridbox10").style.opacity = opacityLevel
+        }
+        if (levelLoop >= 9.999 && levelLoop <= 10.001) {
+            document.getElementById("gridbox10").style.backgroundColor = "black"
+            document.getElementById("gridbox10").style.opacity = 1;
+            document.getElementById("Reset").style.opacity = 1;
+            opacityLevel = 0
+
+        }
+        if (level === levelCap) {
+            clickXP = 0
+        } else { clickXP = clickXP }
+
+
+        document.getElementById("level").innerText = "Level " + level + ": " + xpEarned + "/" + (Math.round(xpNeeded * 100) / 100).toFixed(2);
+    }
+    function reset() {
+        level = 0
+        levelLoop = 0
+        xpEarned = 0
+        xpNeeded = 2
+        clickXP = 1
+        multiplier = multiplier + 1
+        clickXP = clickXP * multiplier
+        levelCap = levelCap + 10
+        boxFill = 10 / levelCap
+
+        document.getElementById("gridbox1").style.backgroundColor = "white"
+        document.getElementById("gridbox2").style.backgroundColor = "white"
+        document.getElementById("gridbox3").style.backgroundColor = "white"
+        document.getElementById("gridbox4").style.backgroundColor = "white"
+        document.getElementById("gridbox5").style.backgroundColor = "white"
+        document.getElementById("gridbox6").style.backgroundColor = "white"
+        document.getElementById("gridbox7").style.backgroundColor = "white"
+        document.getElementById("gridbox8").style.backgroundColor = "white"
+        document.getElementById("gridbox9").style.backgroundColor = "white"
+        document.getElementById("gridbox10").style.backgroundColor = "white"
+        document.getElementById("level").innerText = "Level " + level + ": " + xpEarned + "/" + (Math.round(xpNeeded * 100) / 100).toFixed(2);
+        document.getElementById("levelCap").innerText = "Level Cap - " + levelCap
+        document.getElementById("Reset").style.opacity = 0
+
+    }
+
+</script>

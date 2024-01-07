@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>race</title>
+    <style>
+        body {
+            background-color: orange;
+            overflow: hidden;
+        }
+
+        #car1 {
+            z-index: 3;
+            position: absolute;
+            top: 150px;
+            left: 20px;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            width: 300px;
+            height: auto;
+            transform: scaleX(-1);
+        }
+
+        #car2 {
+            z-index: 3;
+            position: absolute;
+            top: 420px;
+            left: 20px;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            width: 300px;
+            height: auto;
+        }
+
+        #finish {
+            position: absolute;
+            top: -20px;
+            left: 1424px;
+            width: 150px;
+            height: 1000px;
+            background-color: black;
+        }
+
+        #finishScreen {
+            position: absolute;
+            left: 450px;
+            top: 200px;
+            color: green;
+            background-color: hotpink;
+            opacity: 0;
+            font-size: 100px;
+            pointer-events: none;
+
+        }
+
+        #player1 {
+            position: absolute;
+            top: 120px;
+            left: 100px;
+            font-size: 30px;
+        }
+
+        #player2 {
+            position: absolute;
+            top: 400px;
+            left: 100px;
+            font-size: 30px;
+        }
+
+        #play {
+            position: absolute;
+            left: 600px;
+            top: 600px;
+            opacity: 1;
+        }
+
+
+        #timer {
+            position: absolute;
+            left: 650px;
+            top: 50px;
+            opacity: 1;
+            font-size: 50px;
+        }
+
+        #img1 {
+            position: absolute;
+            left: 600px;
+            top: 800px;
+            width: 300px;
+            height: auto;
+
+        }
+
+        #img1 {
+            animation-name: movePicture;
+            animation-duration: 2.5s;
+            animation-iteration-count: 2;
+            animation-timing-function: ease;
+
+        }
+
+        @keyframes movePicture {
+            0% {
+                top: 800px;
+                left: 600px;
+            }
+
+
+            100% {
+                top: 200px;
+                left: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img id="car1"
+            src="https://images.cars.com/in/v2/stock_photos/7f212472-c429-4681-882b-29e52f4d52b5/884b28bd-d67f-4c90-a7e5-a066090db8f7.png?w=1000">
+        <img id="car2"
+            src="https://www.volvocars.com/images/v/-/media/market-assets/australia/applications/localpages/images/model-lineup/my24-xc40-recharge-single.png?h=1007&iar=0&w=1342">
+
+        <img id="img1"
+            src="data:image/jpeg;base64,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">
+        <p id="finish">
+        </p>
+        <p id="finishScreen">
+            Player ? Wins!
+        </p>
+        <p id="player1">
+            Player 1
+        </p>
+        <p id="player2">
+            Player 2
+        </p>
+        <h1 id="play">
+            Hit Enter to Play
+        </h1>
+        <h2 id="timer">
+            3.0
+        </h2>
+
+</html>
+<script>
+
+    var x = 20
+    var xx = 20
+    var moveDistance = 0
+    var p1text = 100
+    var p2text = 100
+    var sec = 3
+    var mil = 0
+    var startVal = 1
+    var time = 0
+    var timer = 100
+
+    document.addEventListener("keyup", moveCar)
+    document.addEventListener("keyup", play)
+
+    document.getElementById("finishScreen").addEventListener("click", reset)
+
+
+    function reset() {
+        x = 20
+        xx = 20
+        document.getElementById("car1").style.left = x + "px"
+        document.getElementById("car2").style.left = xx + "px"
+        document.getElementById("finishScreen").style.opacity = 0
+        moveDistance = 0
+        p1text = 100
+        p2text = 100
+        document.getElementById("player1").style.left = p1text + "px"
+        document.getElementById("player2").style.left = p2text + "px"
+        document.getElementById("play").style.opacity = 1
+        clearInterval(startTimer)
+        document.getElementById("timer").style.opacity = 1
+        sec = 3
+        mil = 0
+        time = 99999
+        startVal = 1
+
+
+
+    }
+    function startTimer() {
+        if (mil <= 10) {
+            mil = mil - 1;
+            document.getElementById("timer").innerText = sec + "." + mil;
+        }
+        if (mil < 0) {
+            mil = 9;
+            sec = sec - 1;
+            document.getElementById("timer").innerText = sec + "." + mil;
+
+        }
+        if (sec < 0) {
+            document.getElementById("timer").style.opacity = 0
+            moveDistance = 30
+            sec = 3
+            mil = 11
+        }
+        document.getElementById("timer").innertText = sec + "." + mil
+
+    }
+
+    function play(e) {
+        if (e.key === "Enter" && startVal === 1) {
+            document.getElementById("play").style.opacity = 0
+            time = timer
+            setInterval(startTimer, time);
+            startVal = startVal - 1;
+            mil = 0
+
+        }
+    }
+
+
+    function moveCar(e) {
+        if (e.key === "e") {
+            x = x + moveDistance
+            p1text = p1text + moveDistance
+            document.getElementById("car1").style.left = x + "px"
+            document.getElementById("player1").style.left = p1text + "px"
+            animate(movePicture)
+        }
+
+        if (e.key === "l") {
+            xx = xx + moveDistance
+            p2text = p2text + moveDistance
+            document.getElementById("car2").style.left = xx + "px"
+            document.getElementById("player2").style.left = p2text + "px"
+        }
+
+
+
+        if (x >= 1125) {
+            document.getElementById("finishScreen").style.opacity = 1
+            document.getElementById("finishScreen").innerText = "Player 1 Wins!"
+            moveDistance = 0;
+            document.getElementById("finishScreen").style.pointerEvents = "auto"
+
+
+        }
+        if (xx >= 1125) {
+            document.getElementById("finishScreen").style.opacity = 1
+            document.getElementById("finishScreen").innerText = "Player 2 Wins!"
+            moveDistance = 0
+            document.getElementById("finishScreen").style.pointerEvents = "auto"
+
+
+        }
+    }
+
+</script>

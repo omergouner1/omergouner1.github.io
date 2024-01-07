@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<title>Box</title>
+
+<head>
+    <style>
+        #box {
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            height: 50px;
+            width: 50px;
+            background-color: red;
+
+        }
+        #button1 {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            z-index: 0;
+            border: none;
+            color: white;
+            box-shadow: 3px 3px 2px black;
+            text-shadow: 2px 2px 4px black;
+            width: 100px;
+            height: 100px;
+            max-width: 385px;
+            max-height: 70px;
+            font-size: 22px;
+            font-style: oblique;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: green;
+        }
+        #button1:hover {
+            background: rgba(42, 119, 44, 0.8);
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="button1">SPEED</button>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>
+<script>
+    var x = 1
+    var y = 1
+    var dir1 = 8
+    var dir2 = 12
+    var score = 0
+    var speed = 70
+
+
+    document.getElementById("box").addEventListener("click", moveBox)
+    document.getElementById("button1").addEventListener("click", changeSpeed)
+
+
+    function moveBox() {
+        if (x <= 0) {
+            dir1 = 8;            
+            document.getElementById("box").style.backgroundColor = "blue"         
+
+        }
+    
+        if (x >= 1380) {
+            dir1 = -8;
+            document.getElementById("box").style.backgroundColor = "red"         
+
+        }
+        x = x + dir1;
+        document.getElementById("box").style.left = x + "px"
+
+
+        if (y <= 0) {
+            dir2 = 12;
+            document.getElementById("box").style.backgroundColor = "green"         
+
+        }
+        if (y >= 735) {
+            dir2 = -12
+            document.getElementById("box").style.backgroundColor = "orange"         
+
+        }
+
+        y = y + dir2
+        document.getElementById("box").style.top = y + "px"
+
+    }
+    function changeSpeed() {
+        speed = speed - 1;
+        setInterval(moveBox, speed)
+
+    }
+</script>

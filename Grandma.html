@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Grandma Fighting Game</title>
+    <style>
+        #healthBar {
+            position: absolute;
+            left: 726px;
+            top: 285px;
+            width: 200px;
+            height: 20px;
+            border: 4px solid darkslategray;
+            background-color: green;
+
+        }
+        #healthBarRemain{
+            position: absolute;
+            left: 930px;
+            top: 289px;
+            width: 0px;
+            height: 20px;
+            background-color: red;
+
+        }
+
+        #gma {
+            position: absolute;
+            top: 100px;
+            left: 700px;
+            border: 5px solid black;
+
+        }
+
+        #Player {
+            position: absolute;
+            top: 400px;
+            left: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Player">
+    </div>
+    <img id="gma"
+        src="data:image/jpeg;base64,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">
+    <div id="healthBar">
+
+    </div>
+    <div id="healthBarRemain">
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    document.addEventListener("keyup", movePlayer)
+
+    var moveDist = 20
+    var x = 100
+    var y = 400
+    var health = 100
+    var barX = 930
+    var barWidth = 0
+    var healthAmo = 20
+
+
+    function movePlayer(e) {
+        console.log(e)
+        if (e.key === "w") {
+            y = y - moveDist
+            document.getElementById("Player").style.top = y + "px"
+        }
+
+        if (e.key === "a") {
+            x = x - moveDist
+            document.getElementById("Player").style.left = x + "px"
+        }
+
+        if (e.key === "s") {
+            y = y + moveDist
+            document.getElementById("Player").style.top = y + "px"
+        }
+        if (e.key === "d") {
+            x = x + moveDist
+            document.getElementById("Player").style.left = x + "px"
+        }
+        
+        if (e.key === " ") {
+            health = health - 10;
+            document.getElementById("healthBarRemain").style.left = barX - 20 + "px"
+            document.getElementById("healthBarRemain").style.width = barWidth + 20 + "px"
+            barWidth = barWidth + healthAmo
+            barX = barX - healthAmo
+
+        }
+        if (health <= 1){
+            health = 0
+            healthAmo = 0
+        }
+        
+    }
+
+
+
+</script>
