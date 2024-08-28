@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Cirlce</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1500" height="600" canvas style="border:1px solid black"></canvas>
+    <p id="x">
+        0
+    </p>
+</body>
+
+</html>
+<script>
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+
+    var radius = 300
+    var x = 300
+    var round = 2
+    setInterval(main, 12)
+    function main() {
+    
+        ctx.beginPath();
+        ctx.arc(x + 300, -180, radius, 0, -round * -Math.PI);
+        ctx.arc(x, 300, radius, 0, round * Math.PI);
+        ctx.stroke();
+        radius = radius - .75
+        x = x + 1
+        document.getElementById("x").innerHTML = x
+
+    }
+</script>

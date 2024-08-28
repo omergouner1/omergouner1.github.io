@@ -149,7 +149,8 @@
                 document.addEventListener("keyup", keyuppress, false)
                 firstTimeSetup = false
                 //start game
-                setInterval(main, 1000 / frameRate)
+                setInterval(main, 250
+ / frameRate)
             }
             //create walls
             //don't  change these. or do, I'm a comment not a cop
@@ -168,8 +169,10 @@
             createPlatform(600, 600, 100, 15)
             createPlatform(300, 410, 100, 15)
             createPlatform(860, 350, 150, 15)
-            createPlatform(1330, 250, 75, 15)
-            createPlatform(1000, 170, 100, 15)
+            createPlatform(1330, 250
+, 75, 15)
+            createPlatform(250
+, 170, 100, 15)
             createPlatform(0, 300, 50, 15)
         
             
@@ -265,7 +268,8 @@
             debugVar = true
 
             ctx.fillText("xs" + playerSpeedX + " x: " + playerX, 500, 200)
-            ctx.fillText("ys" + playerSpeedY + " y: " + playerY, 500, 250)
+            ctx.fillText("ys" + playerSpeedY + " y: " + playerY, 500, 250
+)
 
             ctx.fillStyle = 'black'
             ctx.fillText("on ground " + playerOnGround, 150 + playerX, playerY - 20)
@@ -609,7 +613,8 @@
 
         function createCannon(wallLocation, position, timeBetweenShots) {
 
-            cannonTimeBetweenShots.push(timeBetweenShots / (1000 / frameRate))
+            cannonTimeBetweenShots.push(timeBetweenShots / (250
+ / frameRate))
             cannonProjectileCountdown.push(0)
             cannonLocation.push(wallLocation)
 

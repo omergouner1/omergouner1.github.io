@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+<title> Probability Calculator</title>
+
+<body style="text-align:center;">
+    <h1 style="color:green;">
+        Probability Calculator
+    </h1>
+
+
+    Probability of Event: <input type="text" id="Probability" value="0">
+    Number of Attempts: <input type="text" id="Attempts" value="0">
+    <button type="button" onclick="myFunction()">
+        Calculate
+    </button>
+    <p id="Answer"></p>
+
+
+    <script>
+
+        function myFunction() {
+
+            var prob = (100 - document.getElementById("Probability").value)/100
+            var attempts = document.getElementById("Attempts").value
+            var probFinal = 1 - Math.pow(prob, attempts)
+
+
+            let x = document.getElementById("Probability").value;
+            document.getElementById("Answer").innerHTML = probFinal.toFixed(5)
+        }
+    </script>
+</body>
+
+</html>

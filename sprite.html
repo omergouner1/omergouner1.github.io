@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>bounce dat</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <img src="BetterBobby.png" id="Bobby" hidden>
+    <canvas id="canvas" width="800" height="800" canvas style="border:1px solid black"></canvas>
+</body>
+
+</html>
+<script>
+    var x = 0
+    var y = 0
+    var movex = 0
+    var changeDir = 5
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var img = document.getElementById("Bobby")
+
+   
+
+    ctx.clearRect(0, 0, 800, 800)
+    setInterval(main, 100)
+
+    function main(e) {
+
+
+        if (x === 0) {
+            x = 510
+        } else if (x = 500) {
+            x = 0
+        }
+
+
+        ctx.clearRect(0, 0, 2000, 2000)
+        ctx.drawImage(img, x, 0, 500, 500, 0, 0, 100, 100)
+
+
+
+
+    }
+
+</script>

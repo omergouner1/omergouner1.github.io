@@ -113,7 +113,8 @@
 
         #button3 {
             position: absolute;
-            left: 1000px;
+            left: 250
+px;
             bottom: 512px;
             z-index: 0;
             border: none;
@@ -138,7 +139,8 @@
 
         #button4 {
             position: absolute;
-            left: 1000px;
+            left: 250
+px;
             bottom: 412px;
             z-index: 0;
             border: none;
@@ -291,7 +293,8 @@
     function auto() {
         if (score >= cost2) {
             score = score - cost2;
-            setInterval(addScore, 1000);
+            setInterval(addScore, 250
+);
             document.getElementById("score").innerText = Math.round(score);
             upg2amo = upg2amo + 1;
             document.getElementById("upgrade2amo").innerText = upg2amo;
@@ -303,7 +306,8 @@
     var minutesLabel = document.getElementById("minutes");
     var secondsLabel = document.getElementById("seconds");
     var totalSeconds = 0;
-    setInterval(setTime, 1000);
+    setInterval(setTime, 250
+);
 
     function setTime() {
         ++totalSeconds;

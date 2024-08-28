@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Line Project</title>
+    <style>
+        #x {
+            position: absolute;
+            left: 1225px;
+            top: 10px;
+            font-size: xx-large;
+            font-weight: bold;
+        }
+
+        #y {
+            position: absolute;
+            left: 1225px;
+            top: 60px;
+            font-size: xx-large;
+            font-weight: bold;
+        }
+        #lineAmo{
+            position: absolute;
+            left: 1225px;
+            top: 110px;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        #play {
+            position: absolute;
+            left: 1225px;
+            top: 200px;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="1200" height="600" canvas style="border:1px solid black"></canvas>
+    <p id="x">
+        X:
+    </p>
+    <p id="y">
+        Y:
+    </p>
+    <p id="lineAmo">
+        Lines:
+    </p>
+    <div id="play">
+
+    </div>
+</body>
+
+</html>
+<script>
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var x = 600
+    var y = 0
+    var direction = 1
+    var height = 25
+    var width = 5
+    var moveLine = 0
+    var moveLine2 = 0
+    var xChange = 25
+    var change = 0
+    var linesAmo = 0
+
+    ctx.clearRect(0, 0, 800, 800)
+     setInterval(main, 16)
+
+document.getElementById("play").addEventListener("click", main)
+
+    function main() {
+        var direction = Math.floor(Math.random() * 2) + 1
+        var LineDirection = Math.floor(Math.random() * 2) + 1
+        linesAmo = linesAmo + 1
+
+
+        ctx.fillRect(x, y, width, height)
+        y = y + 25
+        x = x
+        if (moveLine === 1) {
+            y = y - 25
+            x = x + xChange
+
+        }
+
+        if (direction === 1) {
+            width = 5
+            height = 25
+            moveLine = 0
+        }
+        if (direction === 2) {
+            width = 25
+            height = 5
+            moveLine = 1
+        }
+        if (LineDirection === 1 && direction === 2) {
+            x = x - 20
+            change = true
+        }
+        if (change === true) {
+            xChange = 0
+            change = false
+        }
+        if (LineDirection === 2 && direction === 1) {
+            xChange = 25
+        }
+
+        document.getElementById("x").innerText = "X:" + x
+        document.getElementById("y").innerText = "Y:" + y
+        document.getElementById("lineAmo").innerText = "Lines:" + linesAmo
+
+
+        if(y >= 600){
+            ctx.clearRect(0, 0, 1300, 5000)
+            x = 600
+            y = 0
+            linesAmo = 0
+        }
+    }
+
+
+</script>

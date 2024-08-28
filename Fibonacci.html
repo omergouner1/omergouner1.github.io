@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        #play {
+            position: absolute;
+            left: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="value1">
+        0
+    </p>
+    <p id="value2">
+        1
+    </p>
+
+    <div id="play">
+    </div>
+</body>
+
+</html>
+<script>
+    var first = 0
+    var second = 1
+    var secondReplacement = 1
+    var array = [first, second]
+
+    document.getElementById("play").addEventListener("click", main)
+    setInterval(main, 12)
+
+    function main() {
+        secondReplacement = second
+        second = second + first
+        first = secondReplacement
+
+        document.getElementById("value1").innerHTML = first
+        document.getElementById("value2").innerHTML = second
+
+    }
+
+</script>

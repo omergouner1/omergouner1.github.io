@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>ping pong</title>
+    <style>
+        body {
+            background-color: lightslategray;
+
+        }
+
+        #canvas {
+            position: absolute;
+            left: 15%;
+        }
+
+        #score1 {
+            position: absolute;
+            left: 750px;
+            font-family: sans-serif;
+            font-size: 60px;
+        }
+
+        #score2 {
+            position: absolute;
+            left: 650px;
+            font-family: sans-serif;
+            font-size: 60px;
+        }
+
+        #ySpeed {
+            position: absolute;
+            left: 1300px;
+            top: 200px;
+            font-family: sans-serif;
+            font-size: 30px;
+        }
+
+        #xSpeed {
+            position: absolute;
+            left: 1300px;
+            top: 100px;
+            font-family: sans-serif;
+            font-size: 30px;
+        }
+
+        #randomDirection {
+            position: absolute;
+            left: 1300px;
+            top: 400px;
+            font-family: sans-serif;
+            font-size: 30px;
+        }
+
+        #playButton {
+            position: absolute;
+            left: 700px;
+            top: 300px;
+            font-size: 40px;
+            font-family: sans-serif;
+            background-color: green;
+        }
+
+        .transparent {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" class="transparent" width="1000" height="600" canvas style="border:1px solid black"></canvas>
+    <div id="score1" class="transparent">
+        0
+    </div>
+    <div id="score2" class="transparent">
+        0
+    </div>
+    <p id="xSpeed" class="transparent">x speed: 0</p>
+    <p id="ySpeed" class="transparent">y speed: 0</p>
+    <p id="randomDirection" class="transparent">0</p>
+    <button id="playButton">Play</button>
+
+</body>
+
+</html>
+<script>
+    var x = 10
+    var y = 0
+
+    var changeDir = 5
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var Bar1x = 0
+    var Bar1y = 250
+    var Bar2x = 990
+    var Bar2y = 250
+    var score1 = 0
+    var score2 = 0
+    var Bar1yTemp = 250
+    var Bar2yTemp = 250
+    var speedBox = 5
+    var randomDir = 0
+    var radius = 50
+
+    ctx.fillRect(Bar1x, Bar1y, 10, 150)
+    ctx.fillRect(Bar2x, Bar2y, 10, 150)
+
+    document.addEventListener("keydown", moveBar);
+    document.getElementById("playButton").addEventListener("click", play)
+
+
+    function play() {
+        document.getElementById("canvas").style.opacity = 1;
+        document.getElementById("score1").style.opacity = 1;
+        document.getElementById("score2").style.opacity = 1;
+        document.getElementById("ySpeed").style.opacity = 1;
+        document.getElementById("xSpeed").style.opacity = 1;
+        document.getElementById("randomDirection").style.opacity = 1;
+        document.getElementById("playButton").style.opacity = 0;
+        setInterval(main, 12)
+    }
+
+
+    let speed = 80;
+
+    function moveBar(e) {
+        if (e.key === "w") {
+            Bar1yTemp = Bar1y;
+            Bar1y = Bar1y - speed;
+        }
+        if (e.key === "s") {
+            Bar1yTemp = Bar1y;
+            Bar1y = Bar1y + speed;
+        }
+
+        if (e.key === "i") {
+            Bar2yTemp = Bar2y;
+            Bar2y = Bar2y - speed;
+        }
+        if (e.key === "k") {
+            Bar2yTemp = Bar2y;
+            Bar2y = Bar2y + speed;
+        }
+
+        ctx.clearRect(0, Bar1yTemp, 10, 150);
+        ctx.fillRect(Bar1x, Bar1y, 10, 150);
+
+        ctx.clearRect(990, Bar2yTemp, 10, 150);
+        ctx.fillRect(Bar2x, Bar2y, 10, 150);
+
+    }
+
+    function main() {
+        clearX = x;
+        clearY = y;
+
+        if (y <= 0) {
+            changeDir1 = speedBox
+        }
+        if (y >= 550) {
+            changeDir1 = -speedBox
+        }
+
+        if (x <= 10 + radius && y + 50 >= Bar1y && y <= Bar1y + 150) {
+            speedBox = speedBox + 1
+            changeDir = speedBox
+            if (changeDir1 < 0) {
+                changeDir1 = -speedBox
+            }
+            if (changeDir1 > 0) {
+                changeDir1 = speedBox
+            }
+
+        } else if (x <= 0) {
+            radius = Math.floor(Math.random() * 65) + 35
+            randomDir = Math.floor(Math.random() * 100) + 0
+            score1 = score1 + 1
+            ctx.clearRect(x, y, 100, 100)
+            x = 500
+            y = 250
+            xTemp = x
+            yTemp = y
+            ctx.fillRect(x, y, 40, 40)
+            ctx.clearRect(xTemp, yTemp, 40, 40)
+            speedBox = 5
+            if (randomDir > 0) {
+                changeDir1 = -speedBox
+                changeDir = speedBox
+            }
+            if (randomDir > 25) {
+                changeDir1 = speedBox
+                changeDir = -speedBox
+            }
+            if (randomDir > 50) {
+                changeDir1 = -speedBox
+                changeDir = -speedBox
+            }
+            if (randomDir > 75) {
+                changeDir1 = speedBox
+                changeDir = speedBox
+            }
+        }
+
+        if (x >= 990 - radius && y + 50 >= Bar2y && y <= Bar2y + 150) {
+            speedBox = speedBox + 1
+            changeDir = -speedBox
+            if (changeDir1 < 0) {
+                changeDir1 = -speedBox
+            }
+            if (changeDir1 > 0) {
+                changeDir1 = speedBox
+            }
+        } else if (x >= 990) {
+            radius = Math.floor(Math.random() * 65) + 35
+            randomDir = Math.floor(Math.random() * 10) + 0
+            score2 = score2 + 1
+            ctx.clearRect(x, y, 100, 100)
+            x = 500
+            y = 250
+            xTemp = x
+            yTemp = y
+            ctx.fillRect(x, y, 40, 40)
+            ctx.clearRect(xTemp, yTemp, 40, 40)
+            speedBox = 5
+            if (randomDir > 5) {
+                changeDir1 = -speedBox
+                changeDir = speedBox
+            }
+            if (randomDir <= 5) {
+                changeDir1 = speedBox
+                changeDir = -speedBox
+            }
+        }
+        x = x + changeDir
+        y = y + changeDir1
+
+        document.getElementById("score1").innerText = score1
+        document.getElementById("score2").innerText = score2
+
+        document.getElementById("xSpeed").innerText = changeDir
+        document.getElementById("ySpeed").innerText = changeDir1
+        document.getElementById("randomDirection").innerText = randomDir
+
+
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(Bar1x, Bar1y, 10, 150)
+        ctx.fillRect(Bar2x, Bar2y, 10, 150)
+        ctx.arc(x, y, radius, 0, 2 * Math.PI)
+        ctx.fill();
+
+
+        /* ctx.fillRect(x, y, 40, 40); */
+
+    }
+
+</script>
