@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<title>Gnome</title>
+
+<head>
+    <style>
+        #auto {
+            position: absolute;
+            left: 1020px;
+            top: 130px;
+            z-index: 6;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgb(255, 121, 121);
+        }
+
+        #div2 {
+            z-index: -2;
+            position: absolute;
+            left: 988px;
+            bottom: 0px;
+            width: 500px;
+            height: 668px;
+            padding: 50px;
+            border: 10px solid black;
+        }
+
+        #upgrade1amo {
+            position: absolute;
+            left: 1305px;
+            bottom: 512px;
+            z-index: 3;
+            font-size: xx-large;
+            text-shadow: .6px .6px 2px white;
+        }
+
+        #upgrade2amo {
+            position: absolute;
+            left: 1305px;
+            bottom: 412px;
+            z-index: 3;
+            font-size: xx-large;
+            text-shadow: .6px .6px 2px white;
+        }
+
+        #h11 {
+            position: absolute;
+            text-shadow: 2px 2px 5px red;
+            left: 640px;
+            bottom: 415px;
+            color: black;
+
+        }
+
+        body {
+            overflow: hidden;
+            /* Hide scrollbars */
+            ;
+            margin: auto;
+            background-image: linear-gradient(blue, rgb(171, 171, 235));
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            height: auto;
+        }
+
+
+
+        #gnome {
+            position: absolute;
+            border: 5px solid black;
+            text-shadow: 2px 2px 4px black;
+            left: 675px;
+            top: 220px;
+            border-color: darkgray;
+            box-shadow: 2px 2px 4px black;
+            cursor: pointer;
+            width: 200px;
+            height: 200px;
+        }
+
+        #gnome:hover {
+            opacity: 0.8;
+        }
+
+        #upgrade {
+            border: 2px solid rgb(255, 121, 121);
+            position: absolute;
+            left: 1020px;
+            top: 30px;
+            z-index: 1;
+            width: 60px;
+            height: auto;
+        }
+
+
+        #score {
+            color: black;
+            font-size: xx-large;
+            position: absolute;
+            left: 770px;
+            bottom: 400px;
+            border-style: solid;
+            background-color: blue;
+            width: 150px;
+        }
+
+        #button3 {
+            position: absolute;
+            left: 250
+px;
+            bottom: 512px;
+            z-index: 0;
+            border: none;
+            color: white;
+            box-shadow: 3px 3px 2px black;
+            text-shadow: 2px 2px 4px black;
+            width: 385px;
+            height: 70px;
+            max-width: 385px;
+            max-height: 70px;
+            font-size: 22px;
+            font-style: oblique;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: green;
+
+        }
+
+        #button3:hover {
+            background: rgba(42, 119, 44, 0.8);
+        }
+
+        #button4 {
+            position: absolute;
+            left: 250
+px;
+            bottom: 412px;
+            z-index: 0;
+            border: none;
+            color: white;
+            box-shadow: 3px 3px 2px black;
+            text-shadow: 2px 2px 4px black;
+            width: 385px;
+            height: 70px;
+            max-width: 385px;
+            max-height: 70px;
+            font-size: 22px;
+            font-style: oblique;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: green;
+        }
+
+        #button4:hover {
+            background: rgba(42, 119, 44, 0.8);
+        }
+
+        #button5:hover {
+            background: rgba(42, 119, 44, 0.8);
+        }
+
+        #button5 {
+            position: absolute;
+            left: 100px;
+            bottom: 10px;
+            z-index: 0;
+            border: none;
+            color: white;
+            box-shadow: 3px 3px 2px black;
+            text-shadow: 2px 2px 4px black;
+            padding: 20px 100px;
+            font-size: 22px;
+            font-style: oblique;
+            margin: 4px 2px;
+            cursor: pointer;
+            background-color: green;
+
+        }
+
+        #button3:hover {
+            background: rgba(42, 119, 44, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar"></div>
+
+    <div>
+        <img id="gnome"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2LIH5OR2o1IwolfkqSmI_whypD85gkMxyVW2ZtKq3Hzd6vA2FXFUn6HL6UPuWR33Iyc:images.genius.com/ec92ebc969838f23c3e42c9fdc6e7c2b.548x548x1.png&usqp=CAU">
+        <img id="upgrade"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAYFBMVEX///8AAACtra10dHT7+/vm5ub09PTe3t5/f38aGhqIiIiFhYV7e3uCgoL4+Pjs7Ow6OjozMzNGRkaOjo7ExMQODg4gICAnJydNTU3V1dW8vLxXV1dAQEBkZGSampqhoaFkY3FYAAADxUlEQVR4nO2ba5OqMAyGKSytxwsVBS+46P//l7sLUlLuSNLMnCFfdhFHniZv0zRVz1tttdVWW+1DC7kBPO+15ybwfLH9YkcQO34EwRyLPwQR8COIDaceSgRWP7wROBkqBBGwxcIgiD0XQ43AFguAwMUAEcQ+YkfgyZM2AkssGggcDE0EBj20ENzroY3gPBYVwiMGfnCbJyuEvfquGdyu3fVKqa5MsQCLtU55GGC9EAI9OIyFVbJAPRx4EDz1jyEWjcJNMuihWTuqY82wc6OHVvkKGdzooV1Bh6710FHEy0vN4GLN6tpHwLnpQA+dWxkFcxQPgqdd6qFnQ6cd5uq+PSXUw5YHwVq7afXQv7OWQA+kc3Ngcx+CPEnZExvqLzjSw2CLI3QSi+EuS+QiV480ekIYCyI9jPWa4NpNpIfRdhfM1TT5YbzjJkGuJqlhJjT9wlPNcCbQw5S+I9xfEPTMJ7U+YR2Fr4dp3Vd9JPTDxAawgnrgQfBCsHYjz4vJbfCITA/TO/EaxAI1T844DKDSw5zzCA1igTgvZh2JRCS5et6pTHgjiMXMgyFYP2AxzD2bkiA/IOlh9vGYRK9p55/Qoevhg0NCuHZjMHxyThkBPSDE4qOjUokai89Oa1Fz9exJec9e5yAHcljMMA1BhvfEPwdg7NAW6mEEIVKJv81P8SXtfjqGH8Y2dNehR+MwjAViMwlhEUMvQuYXfya6YQlDH8JTiPKf8+CT00t8yzev7L7gK1o9CLvfl17Ff7rv6fHj8MoSpRcfrXYi6LwYoSwuno1x3/KdnywZ9RSE+xHGNzLzMfcTJfEePYCQVB2FuByqUUOO//huhKwp87oZfHeDABNBqouXXtX1zQVC9LC0V2b/ulYjcYONAIuywiLrTSKnaLpZCPdWKnyW7zKTgsINEKHjuwxpaL1LPEgRvp5tApP7TZclo0PYf1lTwQw71tbbKCZF9dk5FOK38nLbDZG5nZAhQAskPEAv3ZBUlycXCIdi5pm4vN1gEga6G9oI73mozAtlbjBueGB/8amJkJpBHmw3eKZ8xp4UDYS4rgNMrXItXpNBdX1DdoON8NDglnnmrxukD/b0yG6wEDbW+IwarjqDuydxpEPwG/d6C3jcSVEjXFv+VZdOgPiMW70ZhGPHInjoAEif2D+pqBBOXSML2wRb/Pr1jdBzCLlteoCggH4jPHvuWvuYy4bmVy3+sMKDmiBQJAAFQjzw2ebUmgzgDyHXQ/cP1AC/CMGwwv7qhpxmC1PZqMKCroSx2mqrrbbaaqv9J/YDen0hk56Ub80AAAAASUVORK5CYII=">
+        <img id="auto" src="">
+
+        <p id="score">
+            score = 0
+        </p>
+        <h1 id="h11">Gnomes:</h1>
+        <p id="upgrade1amo">0</p>
+        <p id="upgrade2amo">0</p>
+        <button id="button3">Cost: 15 Gnomes</button>
+        <button id="button4">Cost: 100 Gnomes</button>
+        <button id="button5">Chromebook Layout</button>
+        <p id="seconds">0</p>
+        <p id="minutes">0</p>
+
+    </div>
+    <div id=div2>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    var score = 0
+    var cost = 15
+    var cost2 = 100
+    var number = 1
+    var upg1amo = 0
+    var upg2amo = 0
+    var audio = new Audio('https://pub-7de58e77bbdc477680e9cd9b28c977e3.r2.dev/Gnome%20Sound%20Effect.mp3');
+
+
+    document.getElementById("gnome").addEventListener("click", addScore)
+    document.getElementById("button3").addEventListener("click", upgrade)
+    document.getElementById("button4").addEventListener("click", auto)
+    document.getElementById("gnome").addEventListener("click", play1)
+    document.getElementById("button5").addEventListener("click", resize)
+
+    var y = 1
+    var x = 1
+    var yy = 1
+    var xx = 1
+    var yyy = 1
+    var xxx = 1
+    var yyyy = 1
+    var xxxx = 1
+
+    function resize() {
+
+        y = 550
+        x = 535
+        yy = 680
+        xx = 580
+        yyy = 1300
+        xxx = 1300
+        yyyy = 670
+        xxxx = 567
+
+        document.getElementById("h11").style.bottom = y + "px"
+        document.getElementById("score").style.bottom = x + "px"
+        document.getElementById("button3").style.bottom = yy + "px"
+        document.getElementById("button4").style.bottom = xx + "px"
+        document.getElementById("upgrade1amo").style.left = yyy + "px"
+        document.getElementById("upgrade2amo").style.left = xxx + "px"
+        document.getElementById("upgrade1amo").style.bottom = yyyy + "px"
+        document.getElementById("upgrade2amo").style.bottom = xxxx + "px"
+
+
+
+    }
+
+    function play1() {
+        audio.play();
+    }
+
+    function addScore() {
+        score = score + number
+        document.getElementById("score").innerText = Math.round(score);
+    }
+    function upgrade() {
+        if (score >= cost) {
+            score = score - cost
+            number = number + 1;
+            document.getElementById("score").innerText = Math.round(score);
+            upg1amo = upg1amo + 1;
+            document.getElementById("upgrade1amo").innerText = upg1amo;
+            cost = cost + cost / 8;
+            document.getElementById("button3").innerText = "Cost: " + Math.round(cost) + " Gnomes";
+        }
+
+    }
+
+    function auto() {
+        if (score >= cost2) {
+            score = score - cost2;
+            setInterval(addScore, 250
+);
+            document.getElementById("score").innerText = Math.round(score);
+            upg2amo = upg2amo + 1;
+            document.getElementById("upgrade2amo").innerText = upg2amo;
+            cost2 = cost2 + cost2 / 6;
+            document.getElementById("button4").innerText = "Cost: " + Math.round(cost2) + " Gnomes";
+        }
+    }
+
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 250
+);
+
+    function setTime() {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds % 60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+    }
+
+    document.getElementById("score").innerText = score
+</script>

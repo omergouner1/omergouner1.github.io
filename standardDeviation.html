@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <p id="nums"></p>
+</body>
+</html>
+<script>
+    var numbers = [4,1,7,10,12]
+    var squared = []
+    var total = 0
+    var mean = 0
+
+    function run(){
+        for(var i = 0; i < numbers.length; i++){
+            total += numbers[i]
+            mean = total/numbers.length
+            squared.push(numbers[i] * numbers[i])
+        }
+    document.getElementById("nums").innerHTML = mean
+    }
+    run()
+</script>
