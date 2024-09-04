@@ -1,30 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
+        #start {
+            position: absolute;
+            left: 200px;
+            top: 250px;
+            width: 25px;
+            height: 25px;
+            background-color: blue;
+        }
     </style>
 </head>
+
 <body>
-    <p id="nums"></p>
+    <p id="dataSet"></p>
+    <p id="mean"></p>
+    <p id="difference"></p>
+    <p id="start"></p>
+    <p id="squared"></p>
+    <p id="sum"></p>
+    <p id="final"></p>
+
+
+
 </body>
+
 </html>
 <script>
-    var numbers = [4,1,7,10,12]
+    var numbers = [12,6,35,123,73,12,54,2,6]
+    var difference = []
     var squared = []
     var total = 0
     var mean = 0
+    var variance = numbers.length - 1
+    var distance = 0
+    var sum = 0
+    var num1 = 0
+    var num2 = 0
 
-    function run(){
-        for(var i = 0; i < numbers.length; i++){
+    document.getElementById("start").addEventListener("click", run)
+
+
+    function run() {
+        for (var i = 0; i < numbers.length; i++) {
             total += numbers[i]
-            mean = total/numbers.length
-            squared.push(numbers[i] * numbers[i])
+            mean = total / numbers.length
         }
-    document.getElementById("nums").innerHTML = mean
+
+        document.getElementById("dataSet").innerHTML = numbers
+        document.getElementById("mean").innerHTML = mean
+     //   document.getElementById("difference").innerHTML = difference
+        run1()
     }
-    run()
+    function run1() {
+        for (var i = 0; i < numbers.length; i++) {
+
+            distance = Math.abs(numbers[i] - mean)
+            difference.push(distance)
+            square = distance * distance
+            squared.push(square)
+            sum += square
+        }
+   //     document.getElementById("squared").innerHTML = squared
+    //    document.getElementById("sum").innerHTML = sum
+        run2()
+    }
+    function run2() {
+        num1 = sum / variance
+        num2 = Math.sqrt(num1)
+        document.getElementById("final").innerHTML = num2
+
+    }
+
+
 </script>
