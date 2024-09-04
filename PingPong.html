@@ -65,6 +65,15 @@
         .transparent {
             opacity: 0;
         }
+        #winScreen {
+            position: absolute;
+            left: 700px;
+            top: 300px;
+            font-size: 40px;
+            font-family: sans-serif;
+            background-color: green;
+            opacity:0
+        }
     </style>
 </head>
 
@@ -79,6 +88,7 @@
     <p id="xSpeed" class="transparent">x speed: 0</p>
     <p id="ySpeed" class="transparent">y speed: 0</p>
     <p id="randomDirection" class="transparent">0</p>
+    <p id="winScreen">YOU WINNNNNNN</p>
     <button id="playButton">Play</button>
 
 </body>
@@ -160,6 +170,12 @@
         }
         if (y >= 550) {
             changeDir1 = -speedBox
+        }
+        if (score1 >= 6){
+            document.getElementById("winScreen").style.opacity = 1
+        }
+        if (score2 >= 6){
+            document.getElementById("winScreen").style.opacity = 1
         }
 
         if (x <= 10 + radius && y + 50 >= Bar1y && y <= Bar1y + 150) {
