@@ -8,23 +8,44 @@
     <style>
         #start {
             position: absolute;
-            left: 200px;
-            top: 250px;
-            width: 25px;
-            height: 25px;
-            background-color: blue;
+            left: 675px;
+            top: 425px;
+            width: 150px;
+            height: 35px;
+            background-color: green;
+        }
+        .styled{
+            font-weight: bolder;
+            font-size: 20px;
+            font-family: verdana;
+        }
+        #dataSet{
+            position:absolute;
+            left:600px;
+            top:170px;
+        }
+        #mean{
+            position:absolute;
+            left:600px;
+            top:215px;
+        }
+        #final{
+            position:absolute;
+            left:600px;
+            top:260px;
         }
     </style>
 </head>
 
 <body>
-    <p id="dataSet"></p>
-    <p id="mean"></p>
+    <p id="dataSet" class = "styled"></p>
+    <p id="mean" class = "styled"></p>
     <p id="difference"></p>
     <p id="start"></p>
     <p id="squared"></p>
     <p id="sum"></p>
-    <p id="final"></p>
+    <p id="semiFinal"></p>
+    <p id="final" class = "styled"></p>
 
 
 
@@ -32,12 +53,13 @@
 
 </html>
 <script>
-    var numbers = [12, 6, 35, 123, 73, 12, 54, 2, 6]
+    var lengths = 5
+    var numbers = []
     var difference = []
     var squared = []
     var total = 0
     var mean = 0
-    var variance = numbers.length - 1
+    var variance = 0
     var distance = 0
     var sum = 0
     var num1 = 0
@@ -45,19 +67,36 @@
 
     document.getElementById("start").addEventListener("click", run)
 
-
     function run() {
+        numbers.length = 0
+        mean = 0
+        total = 0
+        difference.length = 0
+        squared.length = 0
+        variance = 0
+        distance = 0
+        sum = 0
+        num1 = 0
+        num2 = 0
+        for (var i = 0; i < lengths; i++) {
+            numbers.push(Math.floor(Math.random() * 10) + 1)
+        }
+        run1()
+    }
+
+
+    function run1() {
         for (var i = 0; i < numbers.length; i++) {
             total += numbers[i]
             mean = total / numbers.length
         }
 
-        document.getElementById("dataSet").innerHTML = numbers
-        document.getElementById("mean").innerHTML = mean
+        document.getElementById("dataSet").innerHTML = "Numbers: " + numbers
+        document.getElementById("mean").innerHTML = "Mean: " + mean
         //   document.getElementById("difference").innerHTML = difference
-        run1()
+        run2()
     }
-    function run1() {
+    function run2() {
         for (var i = 0; i < numbers.length; i++) {
 
             distance = Math.abs(numbers[i] - mean)
@@ -66,14 +105,16 @@
             squared.push(square)
             sum += square
         }
-        //     document.getElementById("squared").innerHTML = squared
-        //    document.getElementById("sum").innerHTML = sum
-        run2()
+        //  document.getElementById("squared").innerHTML = squared
+        //   document.getElementById("sum").innerHTML = sum
+        run3()
     }
-    function run2() {
+    function run3() {
+        variance = numbers.length - 1
         num1 = sum / variance
+        //  document.getElementById("semiFinal").innerHTML = num1
         num2 = Math.sqrt(num1)
-        document.getElementById("final").innerHTML = num2
+        document.getElementById("final").innerHTML = "Standard Deviation: " + num2
 
     }
 
