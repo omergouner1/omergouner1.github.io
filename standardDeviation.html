@@ -53,7 +53,9 @@
 
 </html>
 <script>
-    var lengths = 5
+    var lengths = 10
+    var upperRange = 20
+    var lowerRange = 1
     var numbers = []
     var difference = []
     var squared = []
@@ -79,7 +81,7 @@
         num1 = 0
         num2 = 0
         for (var i = 0; i < lengths; i++) {
-            numbers.push(Math.floor(Math.random() * 10) + 1)
+            numbers.push(Math.floor(Math.random() * upperRange) + lowerRange)
         }
         run1()
     }
@@ -113,7 +115,7 @@
         variance = numbers.length - 1
         num1 = sum / variance
         //  document.getElementById("semiFinal").innerHTML = num1
-        num2 = Math.sqrt(num1)
+        num2 = Math.sqrt(num1).toFixed(3)
         document.getElementById("final").innerHTML = "Standard Deviation: " + num2
 
     }
