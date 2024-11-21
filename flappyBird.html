@@ -20,7 +20,8 @@
     var canvas = document.getElementById("canvas")
     var ctx = canvas.getContext("2d")
     var x = 0
-    var y = 0
+    var y = 300
+    var gravity = .5
     var clearX = 0
     var clearY = 0
 
@@ -34,9 +35,9 @@
             clearY = y
             y = y - 50
         }
-        if (e.key === "s") {
-            clearY = y
-            y = y + 50
+        if(y < 500){
+            y = y + gravity
+            gravity += gravity * gravity
         }
 
         ctx.clearRect(x, clearY, 50, 50)

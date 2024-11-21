@@ -140,17 +140,14 @@ function moveSnake() {
   column/row properties. 
   
   */
-  for (var i = 0; i < 0; i = i + 1) {
-    var snakeSquare = "???";
+  for (var i = snake.body.length - 1; i > 0; i--) {
+    var snakeSquare = snake.body[i];
 
-    var nextSnakeSquare = "???";
-    var nextRow = "???";
-    var nextColumn = "???";
-    var nextDirection = "???";
+    var nextSnakeSquare = snake.body[i - 1]
 
-    snakeSquare.direction = nextDirection;
-    snakeSquare.row = nextRow;
-    snakeSquare.column = nextColumn;
+    snakeSquare.direction = nextSnakeSquare.direction
+    snakeSquare.row = nextSnakeSquare.row;
+    snakeSquare.column = nextSnakeSquare.column;
     repositionSquare(snakeSquare);
   }
 
@@ -241,6 +238,7 @@ function handleAppleCollision() {
   var row = 0
   var column = 0
 
+
   if (snake.tail.direction === "left") {
     row = snake.tail.row
     column = snake.tail.column + 1
@@ -273,6 +271,13 @@ function hasCollidedWithSnake() {
   head and each part of the snake's body also knows its own row and column.
   
   */
+  for (var i = snake.body.length - 1; i > 0; i--) {
+    if (snake.head.row === snake.body[i].row) {
+      if (snake.head.column === snake.body[i].column) {
+        return true
+      }
+    }
+  }
 
   return false;
 }
@@ -388,6 +393,14 @@ function getRandomAvailablePosition() {
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
+
+    for (var i = 0; i < snake.body.length; i++) {
+      if (randomPosition.row === snake.body[i].row) {
+        if (randomPosition.column === snake.body[i].column) {
+          spaceIsAvailable = false;
+        }
+      }
+    }
 
     /*
     TODO 13: After generating the random position determine if that position is
