@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            position: absolute;
+            left: 12%;
+        }
+
+        body {
+            background-color: teal;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <canvas id="canvas" class="transparent" width="1000" height="550" canvas style="border:1px solid black"></canvas>
+</body>
+
+</html>
+<script>
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var P1x = 0
+    var P1y = 0
+    var P1yTemp = 0
+    var P2x = 990
+    var P2y = 0
+    var P2yTemp = 0
+    var key = {
+        s: false,
+        w: false,
+        i: false,
+        k: false,
+
+    }
+
+    var BoxX = 475
+    var BoxY = 250
+    var BoxXTemp = 0
+    var BoxXTemp = 0
+    var SpeedY = 5
+    var SpeedX = 5
+
+    ctx.fillRect(P1x, P1y, 10, 100)
+    ctx.fillRect(P2x, P2y, 10, 100)
+    ctx.fillRect(BoxX, BoxY, 25, 25)
+
+
+    document.addEventListener("keydown", keyPress)
+    document.addEventListener("keyup", keyUp)
+    setInterval(main, 16)
+
+
+
+    function keyPress(e) {
+        if (e.key === "s") {
+            key.s = true
+        }
+        if (e.key === "w") {
+            key.w = true
+        }
+        if (e.key === "i") {
+            key.i = true
+        }
+        if (e.key === "k") {
+            key.k = true
+        }
+    }
+
+    function keyUp(e) {
+        if (e.key === "s") {
+            key.s = false
+        }
+        if (e.key === "w") {
+            key.w = false
+        }
+        if (e.key === "i") {
+            key.i = false
+        }
+        if (e.key === "k") {
+            key.k = false
+        }
+    }
+
+    function main(e) {
+        if (key.s === true) {
+            if (P1y >= 450) {
+                P1y = P1y
+            } else {
+                P1yTemp = P1y
+                P1y = P1y + 5
+            }
+        }
+
+        if (key.w === true) {
+            if (P1y <= 0) {
+                P1y = P1y
+            } else {
+                P1yTemp = P1y
+                P1y = P1y - 5
+            }
+        }
+        if (key.i === true) {
+            if (P2y <= 0) {
+                P2y = P2y
+            } else {
+                P2yTemp = P2y
+                P2y = P2y - 5
+            }
+
+        }
+
+        if (key.k === true) {
+            if (P2y >= 450) {
+                P2y = P2y
+            } else {
+                P2yTemp = P2y
+                P2y = P2y + 5
+            }
+        }
+
+        BoxXTemp = BoxX
+        BoxYTemp = BoxY
+
+        if (BoxY <= 0) {
+            BoxYTemp = BoxY
+            SpeedY = -SpeedY
+        }
+        if (BoxY >= 525) {
+            BoxYTemp = BoxY
+            SpeedY = -SpeedY
+        }
+        if (BoxX <= 0) {
+            BoxXTemp = BoxX
+            SpeedX = -SpeedX
+        }
+
+        if (BoxX >= 975) {
+            BoxXTemp = BoxX
+            SpeedX = -SpeedX
+        }
+
+
+
+        BoxX = BoxX + SpeedX
+        BoxY = BoxY + SpeedY
+
+        ctx.clearRect(P1x, P1yTemp, 10, 100)
+        ctx.fillRect(P1x, P1y, 10, 100)
+
+        ctx.clearRect(P2x, P2yTemp, 10, 100)
+        ctx.fillRect(P2x, P2y, 10, 100)
+
+        ctx.clearRect(BoxXTemp, BoxYTemp, 25, 25)
+        ctx.fillRect(BoxX, BoxY, 25, 25)
+
+
+    }
+
+
+
+</script>

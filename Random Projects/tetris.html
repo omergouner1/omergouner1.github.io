@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <style>
+        #canvas {
+            position: absolute;
+            left: 25%;
+        }
+
+        #bottoms {
+            position: absolute;
+            left: 25.3%;
+            top: 75%;
+            font-weight: bolder;
+            font-size: 14.2px;
+        }
+
+        #blockGrid {
+            position: absolute;
+            left: 75%;
+            top: 5%;
+            font-weight: bolder;
+            font-size: 14.2px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="450" height="550" canvas style="border:4px solid black" tabindex="0"></canvas>
+    <p id="bottoms"></p>
+    <p id="blockGrid"></p>
+</body>
+
+</html>
+<script>
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var bottom = canvas.height - 25
+    var bottomBoundary = []
+    var piece1 = [{ x: 0, y: 0, }, { x: 0, y: 25, }, { x: 25, y: 25, }, { x: 50, y: 25 }]
+    var piece2 = [{ x: 125, y: 25, }, { x: 150, y: 25, }, { x: 150, y: 0, }, { x: 175, y: 0 }]
+    var blocks = []
+    var blockX = 0
+    var blockY = 0
+    var ranCreateGrid = true
+    var gridX = 25
+    var gridY = 0
+    var pieceFallen = false
+    var stopPiece1 = false
+    var stopPiece2 = false
+    var nextPiece = 0
+    var pieces = [1]
+    var pieceLength1 = piece1.length
+
+    document.addEventListener("keydown", movePiece1)
+    document.addEventListener("keydown", movePiece2)
+    document.addEventListener("click", main);
+    createBoundary()
+    setInterval(main, 64)
+
+    function main() {
+        ctx.clearRect(0, 0, 800, 800)
+        createGrid()
+        downPiece()
+        createVisibleGrid()
+    }
+
+    function downPiece() {
+        downPiece1()
+        if(stopPiece1){
+            downPiece2()
+        }
+    }
+
+    function createGrid() {
+        if (ranCreateGrid === true) {
+            ranCreateGrid = false
+            for (var i = 0; i < (canvas.height / 25) * (canvas.width / 25); i++) {
+                blocks.push(0)
+                document.getElementById("blockGrid").innerHTML = blocks
+            }
+        }
+    }
+    function createVisibleGrid() {
+        for (var i = 0; i < (canvas.height / 25) * (canvas.width / 25); i++) {
+            ctx.fillStyle = "green"
+            ctx.fillRect(gridX, gridY, 1, 50)
+            if (gridX % 25 === 0 && gridX != 24) {
+                gridX += 25
+            }
+        }
+    }
+
+    function downPiece1(e) {
+        for (var i = 0; i < pieceLength1; i++) {
+            document.getElementById("bottoms").innerHTML = bottomBoundary
+
+            //  piece1[i].x = movePiece1(i)
+            if (piece1[i].y >= bottomBoundary[(piece1[i].x / 25)]) { // If the piece hits the bottom, stop
+                piece1[i].y = piece1[i].y
+                stopPiece1 = true
+
+            } if (stopPiece1 === true) {
+                piece1[i].x = piece1[i].x
+                piece1[i].y = piece1[i].y
+            
+            } else {
+                piece1[i].y += 25 // If not, whole block goes down
+            }
+
+            if (piece1[i].y === bottomBoundary[(piece1[i].x / 25)]) { // If boundary is hit, create a boundary for column
+                bottomBoundary[(piece1[i].x / 25)] -= 25
+                document.getElementById("bottoms").innerHTML = bottomBoundary
+            }
+
+            ctx.fillStyle = "black"
+            ctx.fillRect(piece1[i].x, piece1[i].y, 25, 25)
+
+        }
+    }
+
+    function downPiece2(e) {
+        for (var i = 0; i < piece2.length; i++) {
+
+            document.getElementById("bottoms").innerHTML = bottomBoundary
+            //  piece2[i].x = movePiece2(i)
+            if (piece2[i].y >= bottomBoundary[(piece2[i].x / 25)]) { // If the piece hits the bottom, stop
+                piece2[i].y = piece2[i].y
+                stopPiece2 = true
+
+            } else if (stopPiece2) {
+                piece2[i].y = piece2[i].y // If piece hits the ground, stop the whole piece
+
+            } else {
+                piece2[i].y += 25 // If not, whole block goes down
+
+            }
+
+
+            if (piece2[i].y === bottomBoundary[(piece2[i].x / 25)]) { // If boundary is hit, create a boundary for column
+                bottomBoundary[(piece2[i].x / 25)] -= 25
+                document.getElementById("bottoms").innerHTML = bottomBoundary
+                /*   for(var j = 0; j < piece2.length; j++){
+         
+                   } */
+
+            }
+            ctx.fillRect(piece2[i].x, piece2[i].y, 25, 25) // MOVE ALL PIECES AT ONCE NEXT TIME YOU CODE
+
+        }
+    }
+    function movePiece1(e) {
+        if (e.key === "d" && stopPiece1 === false) {
+            for (var i = 0; i < piece1.length; i++) {
+                piece1[i].x += 25
+            }
+        }
+        if (e.key === "a" && stopPiece1 === false) {
+            for (var i = 0; i < piece1.length; i++) {
+                piece1[i].x -= 25
+            } 
+        }
+    }
+    function movePiece2(e) {
+        if (e.key === "d" && stopPiece2 === false) {
+            for (var i = 0; i < piece2.length; i++) {
+                piece2[i].x += 25
+            }
+        }
+        if (e.key === "a" && stopPiece2 === false) {
+            for (var i = 0; i < piece2.length; i++) {
+                piece2[i].x -= 25
+            }
+        }
+    }
+
+    function createBoundary() {
+        for (var i = 0; i < (canvas.width / 25); i++) {
+            bottomBoundary.push(bottom)
+        }
+    }
+
+</script>

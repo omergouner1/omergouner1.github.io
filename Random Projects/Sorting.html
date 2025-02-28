@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #butto {
+            position: absolute;
+            left: 80%;
+            top: 50%
+        }
+
+
+        #draw {
+            position: absolute;
+            left: 80%;
+            top: 55%
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="2000" height="1000"></canvas>
+    <button id="butto">SORT</button>
+    <button id="draw">DRAW</button>
+
+
+</body>
+
+</html>
+<script>
+    var nums = []
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+    var x = 100
+
+    document.getElementById("butto").addEventListener("click", sort)
+    document.getElementById("draw").addEventListener("click", draw)
+    setInterval(sort,50)
+    setInterval(draw, 16)
+
+
+    function main() {
+        for (var i = 0; i < 40; i++) {
+            nums[i] = Math.floor(Math.random() * 800)
+            x = x + 30
+        }
+        x = 100
+    }
+    function sort() {
+        x = 100
+        for (var i = 1; i < nums.length; i++) {
+            var nums1temp = nums[i - 1]
+            if (nums[i] > nums[i - 1]) {
+                nums[i - 1] = nums[i]
+                nums[i] = nums1temp
+            }
+        }
+
+
+    }
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        for (var i = 0; i < nums.length; i++) {
+            x = x + 30
+            ctx.fillRect(x, 850, 20, -nums[i])
+        }
+        x = 100
+    }
+
+
+
+
+    main()
+
+</script>

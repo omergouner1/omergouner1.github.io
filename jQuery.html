@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat-Themed jQuery Practice</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            text-align: center;
+        }
+        header {
+            background-color: #ffcc00;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .cat-theme {
+            color: #333;
+        }
+        .content {
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            background-color: #fff;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #ffcc00;
+            border: none;
+            cursor: pointer;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+        }
+        .infoSection, .highlight {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #eef;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header id="header" class="cat-theme">
+    Welcome to the Cat-Themed jQuery Practice!
+</header>
+
+<div class="content">
+    <h2>Test jQuery Commands</h2>
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <p>Try changing all paragraphs!</p>
+
+    <!-- Button for event handlers -->
+    <button class="submitBtn btn">Submit Form</button>
+    <button class="toggleMenuBtn btn">Toggle Menu</button>
+
+    <!-- ID and Class-based selectors -->
+    <div id="menu">
+        <p>Menu item 1</p>
+        <p>Menu item 2</p>
+    </div>
+
+    <!-- Highlighted content for class-based selection -->
+    <div class="highlight">
+        <p>This is highlighted content.</p>
+    </div>
+
+    <!-- Unordered list -->
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <!-- Image gallery -->
+    <div id="gallery">
+        <h2>Gallery</h2>
+        <img src="https://images.unsplash.com/photo-1531040630173-7cfb894c8eaa?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D" alt="Cat Image">
+    </div>
+
+    <!-- Info section for class-based selection -->
+    <div class="infoSection">
+        <p class="infoText">This is some info text.</p>
+    </div>
+
+    <!-- Controls section for appending elements -->
+    <section id="controls">
+        <h2>Controls Section</h2>
+    </section>
+
+</div>
+
+<footer id="footer">
+    <p>Cat-Themed Footer</p>
+</footer>
+
+<script>
+    // You can add your custom jQuery here to test!
+</script>
+
+</body>
+</html>
