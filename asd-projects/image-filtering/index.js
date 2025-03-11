@@ -47,11 +47,12 @@ function applyFilter(filterFunction) { // Apply's the new filter to the image.
 }
 
 // TODO 7: Create the applyFilterNoBackground function
-function applyFilterNoBackground() {
+function applyFilterNoBackground(filterFunction) {
   var backgroundColour = image[0][0]
   for (var i = 0; i < image.length; i++) {
     for (var j = 0; j < image[i].length; j++) {
-      if (image[i][j] ===! backgroundColour) {
+      if (image[i][j] === backgroundColour) {
+        console.log("yay")
         var rgbString = image[i][j]
         var rgbNumbers = rgbStringToArray(rgbString)
         filterFunction(rgbNumbers)
@@ -63,7 +64,7 @@ function applyFilterNoBackground() {
   }
 }
 
-// TODO 5: Create the keepInBounds function
+// TODO 5: Create thiltFe keepInBounds function
 function keepInBounds(num1) {
   if (num1 < 0) {
     return 0
