@@ -20,10 +20,10 @@ The CSS ids you will work with are:
 
 
 // TODO 2: Implement bubbleSort
-async function bubbleSort(array) {
+async function bubbleSort(array) { // Sorts the function using bubble sort
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = array.length - 1; j > i; j--) {
-            if (a                           rray[j].value < array[j - 1].value) {
+            if (array[j].value < array[j - 1].value) {
                 swap(array, j, j - 1);
                 updateCounter(bubbleCounter);
                 await sleep();
@@ -33,7 +33,7 @@ async function bubbleSort(array) {
 }
    
     // TODO 3: Implement quickSort
-    async function quickSort(array, left, right) {
+    async function quickSort(array, left, right) { // Sorts the function using Quick Sort
         if (right - left > 0) {
             let index = await partition(array, left, right);
             if (left < index - 1) {
@@ -47,6 +47,8 @@ async function bubbleSort(array) {
    
    
     // TODOs 4 & 5: Implement partition
+
+    // Helps implement quick sort
     async function partition(array, left, right) {
         let pivot = array[Math.floor((right + left) / 2)].value;
         while (left < right) {
@@ -70,7 +72,7 @@ async function bubbleSort(array) {
    
    
     // TODO 1: Implement swap
-    function swap (array,i,j){
+    function swap (array,i,j){ // Swaps the current iteration with the one after
      var temp = array[i];
      array[i] = array[j];
      array[j] = temp;
